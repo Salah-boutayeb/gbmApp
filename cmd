@@ -1,0 +1,2 @@
+sequelize model:generate --name Patient --attributes nom:STRING,prenom:STRING,CIN:STRING,sexe:BOOLEAN,adresse:STRING,tele:STRING,status:STRING 
+sequelize model:generate --name History --attributes asthme:BOOLEAN,cancer:BOOLEAN,cardiaque:BOOLEAN, diabete:BOOLEAN,hypArterielle:BOOLEAN, epilepsie:BOOLEAN, douleur:BOOLEAN,respiratoire:BOOLEAN, lymphatique:BOOLEAN, neurologique:BOOLEAN, psychiatrique:BOOLEAN, gastroIntestinal:BOOLEAN, genitoUrinaire:BOOLEAN,prisePoids:BOOLEAN, pertePoids:BOOLEAN,musculo:BOOLEAN,patientId:INTEGER       

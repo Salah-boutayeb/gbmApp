@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Nom de patient</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+    />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+
+  <body>
+    <!-- partial:index.partial.html -->
+    <div id="wrapper">
+      <div class="content-area">
+        <div class="container-fluid">
+          <div class="main">
+            <div class="row mt-4 justify-content-center align-items-center">
+              <div class="col-12">
+                <div class="box">
+                  <h2 class="text-white">Nom de patient</h2>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-2">
+              <div class="col-md-12 col-sm-12 col-12">
+                <div class="box mt-4">
+                  <div id="linechart"></div>
+                </div>
+              </div>
+
+              <div class="box mt-4 col-md-12 col-sm-12 col-12">
+                <div class="mt-4">
+                  <div id="progress1"></div>
+                </div>
+                <div class="mt-4">
+                  <div id="progress2"></div>
+                </div>
+                <div class="mt-4">
+                  <div id="progress3"></div>
+                </div>
+                <div class="mt-4">
+                  <div id="progress4"></div>
+                </div>
+              </div>
+
+              <div class="col-12 mb-4">
+                <div class="box mt-4">
+                  <form method="post" action="" disabled>
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="form-group">
+                          <label for="nom">Nom</label>
+                          <input
+                            type="nom"
+                            class="form-control"
+                            id="nom"
+                            placeholder="Entrer votre Nom"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="form-group">
+                          <label for="prenom">Prénom</label>
+                          <input
+                            type="prenom"
+                            class="form-control"
+                            id="prenom"
+                            placeholder="Entrer votre prénom"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="form-group">
+                          <label for="cin">CIN</label>
+                          <input
+                            type="cin"
+                            class="form-control"
+                            id="cin"
+                            placeholder="Entrer votre CIN"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="form-group">
+                          <label for="sexe">Sexe:</label>
+                          <select class="form-control" id="sexe">
+                            <option value="homme">Homme</option>
+                            <option value="femme">Femme</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="form-group">
+                          <label for="datenaissance">Date de naissance:</label>
+                          <input
+                            type="date"
+                            name="datenaissance"
+                            id="datenaissance"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="form-group text-center">
+                          <input
+                            class="btn btn-success text-center"
+                            type="submit"
+                            value="valider"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- partial -->
+  </body>
+</html>
