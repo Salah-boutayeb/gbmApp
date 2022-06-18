@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head.ejs'); %>
+
+  <body>
+    <!-- partial:index.partial.html -->
+    <%- include('../partials/header.ejs'); %>
+    <div id="wrapper">
+      <div class="col-12 mb-4">
+        <div class="box mt-4">
+          <form method="post" action="/addpatient">
+            <div class="row text-center">
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="nom">Nom</label>
+                  <input
+                    type="nom"
+                    class="form-control"
+                    name="nom"
+                    id="nom"
+                    placeholder="Entrer votre Nom"
+                  />
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="prenom">Prénom</label>
+                  <input
+                    type="prenom"
+                    class="form-control"
+                    name="prenom"
+                    id="prenom"
+                    placeholder="Entrer votre prénom"
+                  />
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="naissance">lieu de naissance</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="naissance"
+                    id="naissance"
+                    placeholder="Entrer votre date de naissance"
+                  />
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="telephone">telephone</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="tele"
+                    id="telephone"
+                    placeholder="Entrer votre numero de telephone"
+                  />
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="cin">CIN</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="cin"
+                    id="cin"
+                    placeholder="Entrer votre CIN"
+                  />
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="sexe">Sexe:</label>
+                  <select class="form-control" name="sexe" id="sexe">
+                    <option value="homme">Homme</option>
+                    <option value="femme">Femme</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="datenaissance">Date de naissance:</label>
+                  <input type="date" name="datenaissance" id="datenaissance" />
+                </div>
+              </div>
+              <% for(var i = 0; i < issues.length; i++) { %>
+
+              <div class="col-12">
+                <div class="row">
+                  <% for(var j = 0; j < issues[i].length; j++) { %>
+                  <div class="col-3">
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="<%= issues[i][j] %>"
+                        value="<%= issues[i][j] %>"
+                        name="<%= issues[i][j] %>"
+                      />
+                      <label class="form-check-label" for="<%= issues[i][j] %>"
+                        ><%= issues[i][j] %></label
+                      >
+                    </div>
+                  </div>
+                  <% } %>
+                </div>
+              </div>
+              <% } %>
+
+              <div class="col-12">
+                <div class="form-group text-center">
+                  <input
+                    class="btn btn-success text-center"
+                    type="submit"
+                    value="valider"
+                  />
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- partial -->
+    <%- include('../partials/footer.ejs'); %>
+  </body>
+</html>

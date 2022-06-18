@@ -2,7 +2,7 @@
 const { Model } = require("sequelize");
 var models = require("../models");
 module.exports = (sequelize, DataTypes) => {
-  class Patient extends Model {
+  class PatientData extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -12,26 +12,22 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  Patient.init(
+  PatientData.init(
     {
-      nom: DataTypes.STRING,
-      prenom: DataTypes.STRING,
-      CIN: DataTypes.STRING,
-      sexe: DataTypes.BOOLEAN,
-      adresse: DataTypes.STRING,
-      tele: DataTypes.STRING,
-      status: DataTypes.STRING,
+      ecg: DataTypes.DOUBLE,
+      temp: DataTypes.DOUBLE,
+      patientId: DataTypes.INTEGER,
     },
     {
       sequelize,
-      modelName: "Patient",
+      modelName: "PatientData",
     }
   );
-  Patient.associate = function (models) {
-    Patient.hasMany(models.PatientData, {
-      foreignKey: "patientDataId",
-      as: "patientData",
+  PatientData.associate = function (models) {
+    PatientData.belongsTo(models.Patient, {
+      foreignKey: "patientId",
+      as: "patient",
     });
   };
-  return Patient;
+  return PatientData;
 };

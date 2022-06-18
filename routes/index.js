@@ -13,5 +13,8 @@ router.post("/logout", user.logout);
 router.get("/logout", user.logout);
 /* GET home page. */
 router.get("/", user.home);
+router.get("/patients", user.show_patients);
+router.get("/patient", user.show_patient);
+router.post("/addpatient", user.createPatient);
 
 module.exports = router;

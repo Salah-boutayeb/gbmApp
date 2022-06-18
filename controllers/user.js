@@ -51,3 +51,38 @@ exports.logout = (req, res, next) => {
     res.redirect("/");
   });
 };
+
+/* patient controllers */
+exports.createPatient = (req, res, next) => {
+  console.log(req.body);
+  res.redirect("/patient");
+};
+exports.show_patient = (req, res, next) => {
+  var issues = [
+    ["Asthme", "Cancer", "Maladies cardiaques", "Diabète"],
+    ["Hypertension artérielle", "Trouble psychiatrique", "Epilepsie"],
+    [
+      "Douleur à la poitrine",
+      "Respiratoire",
+      "Maladies cardiaques",
+      "Cardiovasculaire",
+    ],
+    ["Hématologique", "Lymphatique", "Neurologique", "Psychiatrique"],
+    [
+      "Gastro-intestinal",
+      "Génito-urinaire",
+      "Prise de poids",
+      "Perte de poids",
+    ],
+    ["Musculo-squelettique"],
+  ];
+  res.render("patient/patientInfo", { issues: issues });
+  //res.render("patient/graphs");
+};
+exports.show_patients = (req, res, next) => {
+  res.render("patient/patients");
+};
+exports.deletePatient = (req, res, next) => {
+  console.log(req.body);
+};
+exports.updatePatient = (req, res, next) => {};

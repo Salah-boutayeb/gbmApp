@@ -1,75 +1,81 @@
-'use strict';
+"use strict";
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Histories', {
+    await queryInterface.createTable("Histories", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       asthme: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
       },
       cancer: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
       },
       cardiaque: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
       },
       diabete: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
       },
       hypArterielle: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
       },
       epilepsie: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
       },
       douleur: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
       },
       respiratoire: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
       },
       lymphatique: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
       },
       neurologique: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
       },
       psychiatrique: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
       },
       gastroIntestinal: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
       },
       genitoUrinaire: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
       },
       prisePoids: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
       },
       pertePoids: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
       },
       musculo: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
       },
       patientId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          // User belongsTo Company 1:1
+          model: "Patients",
+          key: "id",
+        },
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Histories');
-  }
+    await queryInterface.dropTable("Histories");
+  },
 };
