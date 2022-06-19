@@ -94,7 +94,7 @@ exports.createPatient = (req, res, next) => {
     });
 
   console.log(newP.id);
-  res.redirect("/patient");
+  res.redirect("/patients");
 };
 exports.show_patient = async (req, res, next) => {
   let user = await models.User.findOne({
