@@ -16,19 +16,7 @@
   </head>
 
   <body>
-    <!-- partial:index.partial.html -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/">GBIM Monitor </a>
-      <p>Welcome <%= data.nom + ' ' +data.prenom %></p>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/patient">ajouter patient</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/logout">logout</a>
-        </li>
-      </ul>
-    </nav>
+    <%- include('../partials/header.ejs'); %>
     <div id="wrapper">
       <div class="content-area">
         <div class="container-fluid">
@@ -72,6 +60,9 @@
     <!-- partial -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script>
+      let userid = <%= user.id %>
+    </script>
     <script src="javascripts/index.js"></script>
   </body>
 </html>

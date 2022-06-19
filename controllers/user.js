@@ -10,6 +10,7 @@ const generateHash = (password) => {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
 exports.show_login = (req, res, next) => {
+  res.locals.user = null
   res.render("user/login", { errors: {} });
 };
 
@@ -122,7 +123,7 @@ exports.show_patient = async (req, res, next) => {
       "Perte de poids",
     ],
   ];
-  res.render("patient/patientInfo", { issues: issues, data: user });
+  res.render("patient/patientInfo", { issues: issues, user: user });
   //res.render("patient/graphs");
 };
 exports.show_patients = async (req, res, next) => {
@@ -132,7 +133,7 @@ exports.show_patients = async (req, res, next) => {
   let patients = await models.Patient.findAll();
   res.render("patient/patients", {
     patients: patients,
-    data: user,
+    user: user,
   });
 };
 exports.deletePatient = async (req, res, next) => {
@@ -157,6 +158,6 @@ exports.show_graphs = async (req, res, next) => {
 
   res.render("patient/graphs", {
     patient: patient.dataValues,
-    data: user,
+    user: user,
   });
 };

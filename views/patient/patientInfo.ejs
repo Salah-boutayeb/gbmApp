@@ -5,23 +5,12 @@
 
   <body>
     <!-- partial:index.partial.html -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/">GBIM Monitor </a>
-      <p>Welcome <%= data.nom + ' ' +data.prenom %></p>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/patient">ajouter patient</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/logout">logout</a>
-        </li>
-      </ul>
-    </nav>
+    <%- include('../partials/header.ejs'); %>
     <div id="wrapper">
       <div class="col-12 mb-4">
         <div class="box mt-4">
           <form method="post" action="/addpatient">
-            <div class="row text-center">
+            <div class="row">
               <div class="col-6">
                 <div class="form-group">
                   <label for="nom">Nom</label>
@@ -109,7 +98,7 @@
               </div>
               <% for(var i = 0; i < issues.length; i++) { %>
 
-              <div class="col-12">
+              <div class="col-12 pl-5">
                 <div class="row">
                   <% for(var j = 0; j < issues[i].length; j++) { %>
                   <div class="col-3">
