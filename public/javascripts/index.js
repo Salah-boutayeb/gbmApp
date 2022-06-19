@@ -419,7 +419,6 @@ let i = setInterval(function () {
 
 setTimeout(function () {
   clearInterval(i);
-  console.log("done");
 }, 5000);
 
 var wsUri = "ws://192.168.1.103:1337";
@@ -427,12 +426,17 @@ var output;
 
 function init() {
   testWebSocket();
+  console.log("userid:", userid);
+
 }
 
 function testWebSocket() {
   websocket = new WebSocket(wsUri);
   websocket.onmessage = function (evt) {
     onMessage(evt);
+  };
+  socket.onopen = function (event) {
+    socket.send(`id: ${userid}`);
   };
 }
 

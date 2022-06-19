@@ -1,15 +1,23 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg justify-content-between">
   <a class="navbar-brand" href="/">GBIM Monitor</a>
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item"></li>
-    <li class="nav-item">
-      <% if (user=!null) { %>
-      <h1>welcome <%= req.user.nom %></h1>
-      <% } %> <% else{ %>
-      <a class="nav-link" href="/login">login</a>
-      <a class="nav-link" href="/signup">signup</a>
-      <% } %>
-      <a class="nav-link" href="/">Home</a>
-    </li>
+  <ul class="navbar-nav flex-row">
+    <% if (typeof user != 'undifined' && user) { %>
+      <li class="nav-item  ml-2">
+        <a class="nav-link" href="/patients">Liste des patients</a>
+      </li>
+      <li class="nav-item  ml-2">
+        <a class="nav-link" href="/patient">ajouter patient</a>
+      </li>
+      <li class="nav-item  ml-2">
+        <a class="nav-link" href="/logout">logout</a>
+      </li>
+    <% } else{ %>
+      <li class="nav-item  ml-2">
+        <a class="nav-link" href="/login">login</a>
+      </li>
+      <li class="nav-item  ml-2">
+        <a class="nav-link" href="/signup">signup</a>
+      </li>
+    <% }%>
   </ul>
 </nav>
