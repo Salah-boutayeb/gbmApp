@@ -10,7 +10,7 @@ const generateHash = (password) => {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
 exports.show_login = (req, res, next) => {
-  res.locals.user = null
+  res.locals.user = null;
   res.render("user/login", { errors: {} });
 };
 

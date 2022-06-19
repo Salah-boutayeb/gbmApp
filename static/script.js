@@ -1,52 +1,49 @@
-
-
-
 window.Apex = {
   chart: {
     foreColor: "#fff",
     toolbar: {
-      show: false
-    }
+      show: false,
+    },
   },
   colors: ["#FCCF31", "#17ead9", "#f02fc2"],
   stroke: {
-    width: 3
+    width: 3,
   },
   dataLabels: {
-    enabled: false
+    enabled: false,
   },
   grid: {
-    borderColor: "#40475D"
+    borderColor: "#40475D",
   },
   xaxis: {
     axisTicks: {
-      color: "#333"
+      color: "#333",
     },
     axisBorder: {
-      color: "#333"
-    }
+      color: "#333",
+    },
   },
   fill: {
     type: "gradient",
     gradient: {
-      gradientToColors: ["#F55555", "#6078ea", "#6094ea"]
-    }
+      gradientToColors: ["#F55555", "#6078ea", "#6094ea"],
+    },
   },
   tooltip: {
     theme: "dark",
     x: {
       formatter: function (val) {
         return moment(new Date(val)).format("HH:mm:ss");
-      }
-    }
+      },
+    },
   },
   yaxis: {
     decimalsInFloat: 2,
     opposite: true,
     labels: {
-      offsetX: -10
-    }
-  }
+      offsetX: -10,
+    },
+  },
 };
 
 var trigoStrength = 3;
@@ -68,24 +65,26 @@ function getRangeRandom(yrange) {
 }
 
 let hrIndex = 0;
-const hrData = [10,0,11,0,13,0,12,0,11,0,10,0,15,0,17,0,15,0,17,0,19,0,20,0,23,0,24,0,25,0,30,0,29,28,37,35,37,39,50,65,30,25,20,15,10,15,11,10]
+const hrData = [
+  10, 0, 11, 0, 13, 0, 12, 0, 11, 0, 10, 0, 15, 0, 17, 0, 15, 0, 17, 0, 19, 0,
+  20, 0, 23, 0, 24, 0, 25, 0, 30, 0, 29, 28, 37, 35, 37, 39, 50, 65, 30, 25, 20,
+  15, 10, 15, 11, 10,
+];
 function getHR() {
   hrIndex++;
-  if(hrIndex == hrData.length-1) {
+  if (hrIndex == hrData.length - 1) {
     hrIndex = 0;
   }
   return hrData[hrIndex];
 }
 
-
 function getNewData(baseval, yrange) {
   var newTime = baseval + 300000;
   return {
     x: newTime,
-    y: Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min
+    y: Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min,
   };
 }
-
 
 var optionsLine = {
   chart: {
@@ -96,15 +95,15 @@ var optionsLine = {
       enabled: true,
       easing: "linear",
       dynamicAnimation: {
-        speed: 50
-      }
+        speed: 50,
+      },
     },
     dropShadow: {
       enabled: true,
       opacity: 0.3,
       blur: 5,
       left: -7,
-      top: 22
+      top: 22,
     },
     events: {
       animationEnd: function (chartCtx) {
@@ -115,47 +114,47 @@ var optionsLine = {
             {
               series: [
                 {
-                  data: newData1
-                }
+                  data: newData1,
+                },
               ],
             },
             false,
             false
           );
         }, 50);
-      }
+      },
     },
     toolbar: {
-      show: false
+      show: false,
     },
     zoom: {
-      enabled: false
-    }
+      enabled: false,
+    },
   },
   dataLabels: {
-    enabled: false
+    enabled: false,
   },
   stroke: {
     curve: "straight",
-    width: 2
+    width: 2,
   },
   grid: {
     padding: {
       left: 0,
-      right: 0
-    }
+      right: 0,
+    },
   },
   markers: {
     size: 0,
     hover: {
-      size: 0
-    }
+      size: 0,
+    },
   },
   series: [
     {
       name: "Heart Beat",
-      data: [[100,100]]
-    }
+      data: [[100, 100]],
+    },
   ],
   xaxis: {
     categories: [""],
@@ -164,8 +163,8 @@ var optionsLine = {
     text: "Heart Beat Monitor",
     align: "left",
     style: {
-      fontSize: "12px"
-    }
+      fontSize: "12px",
+    },
   },
   subtitle: {
     text: "0",
@@ -173,20 +172,20 @@ var optionsLine = {
     align: "right",
     offsetY: 0,
     style: {
-      fontSize: "22px"
-    }
+      fontSize: "22px",
+    },
   },
   legend: {
     show: true,
     floating: true,
     horizontalAlign: "left",
     onItemClick: {
-      toggleDataSeries: false
+      toggleDataSeries: false,
     },
     position: "top",
     offsetY: -33,
-    offsetX: 60
-  }
+    offsetX: 60,
+  },
 };
 
 var chartLine = new ApexCharts(
@@ -195,39 +194,38 @@ var chartLine = new ApexCharts(
 );
 chartLine.render();
 
-
 var optionsProgress1 = {
   chart: {
     height: 70,
     type: "bar",
     stacked: true,
     sparkline: {
-      enabled: true
-    }
+      enabled: true,
+    },
   },
   plotOptions: {
     bar: {
       horizontal: true,
       barHeight: "20%",
       colors: {
-        backgroundBarColors: ["#40475D"]
-      }
-    }
+        backgroundBarColors: ["#40475D"],
+      },
+    },
   },
   stroke: {
-    width: 0
+    width: 0,
   },
   series: [
     {
       name: "Temperature",
-      data: [44]
-    }
+      data: [44],
+    },
   ],
   title: {
     floating: true,
     offsetX: -10,
     offsetY: 5,
-    text: "Temperature"
+    text: "Temperature",
   },
   subtitle: {
     floating: true,
@@ -235,21 +233,21 @@ var optionsProgress1 = {
     offsetY: 0,
     text: "44C",
     style: {
-      fontSize: "20px"
-    }
+      fontSize: "20px",
+    },
   },
   tooltip: {
-    enabled: false
+    enabled: false,
   },
   xaxis: {
-    categories: ["Temperature"]
+    categories: ["Temperature"],
   },
   yaxis: {
-    max: 100
+    max: 100,
   },
   fill: {
-    opacity: 1
-  }
+    opacity: 1,
+  },
 };
 
 var chartProgress1 = new ApexCharts(
@@ -264,33 +262,33 @@ var optionsProgress2 = {
     type: "bar",
     stacked: true,
     sparkline: {
-      enabled: true
-    }
+      enabled: true,
+    },
   },
   plotOptions: {
     bar: {
       horizontal: true,
       barHeight: "20%",
       colors: {
-        backgroundBarColors: ["#40475D"]
-      }
-    }
+        backgroundBarColors: ["#40475D"],
+      },
+    },
   },
   colors: ["#17ead9"],
   stroke: {
-    width: 0
+    width: 0,
   },
   series: [
     {
       name: "Pressure",
-      data: [80]
-    }
+      data: [80],
+    },
   ],
   title: {
     floating: true,
     offsetX: -10,
     offsetY: 5,
-    text: "Pressure"
+    text: "Pressure",
   },
   subtitle: {
     floating: true,
@@ -298,25 +296,25 @@ var optionsProgress2 = {
     offsetY: 0,
     text: "80%",
     style: {
-      fontSize: "20px"
-    }
+      fontSize: "20px",
+    },
   },
   tooltip: {
-    enabled: false
+    enabled: false,
   },
   xaxis: {
-    categories: ["Pressure"]
+    categories: ["Pressure"],
   },
   yaxis: {
-    max: 100
+    max: 100,
   },
   fill: {
     type: "gradient",
     gradient: {
       inverseColors: false,
-      gradientToColors: ["#6078ea"]
-    }
-  }
+      gradientToColors: ["#6078ea"],
+    },
+  },
 };
 
 var chartProgress2 = new ApexCharts(
@@ -325,46 +323,45 @@ var chartProgress2 = new ApexCharts(
 );
 chartProgress2.render();
 
-
 var optionsProgress4 = {
   chart: {
     height: 70,
     type: "bar",
     stacked: true,
     sparkline: {
-      enabled: true
-    }
+      enabled: true,
+    },
   },
   plotOptions: {
     bar: {
       horizontal: true,
       barHeight: "20%",
       colors: {
-        backgroundBarColors: ["#40475D"]
-      }
-    }
+        backgroundBarColors: ["#40475D"],
+      },
+    },
   },
   colors: ["#f02fc2"],
   stroke: {
-    width: 0
+    width: 0,
   },
   series: [
     {
       name: "SpO2",
-      data: [74]
-    }
+      data: [74],
+    },
   ],
   fill: {
     type: "gradient",
     gradient: {
-      gradientToColors: ["#6094ea"]
-    }
+      gradientToColors: ["#6094ea"],
+    },
   },
   title: {
     floating: true,
     offsetX: -10,
     offsetY: 5,
-    text: "SpO2"
+    text: "SpO2",
   },
   subtitle: {
     floating: true,
@@ -372,18 +369,18 @@ var optionsProgress4 = {
     offsetY: 0,
     text: "0%",
     style: {
-      fontSize: "20px"
-    }
+      fontSize: "20px",
+    },
   },
   tooltip: {
-    enabled: false
+    enabled: false,
   },
   xaxis: {
-    categories: ["SpO2"]
+    categories: ["SpO2"],
   },
   yaxis: {
-    max: 100
-  }
+    max: 100,
+  },
 };
 
 var chartProgress4 = new ApexCharts(
@@ -411,30 +408,21 @@ let i = setInterval(function () {
   chartProgress4.updateOptions({
     series: [
       {
-        data: [p4Data]
-      }
+        data: [p4Data],
+      },
     ],
     subtitle: {
-      text: p4Data + "%"
-    }
+      text: p4Data + "%",
+    },
   });
 }, 500);
 
 setTimeout(function () {
   clearInterval(i);
   console.log("done");
-}, 5000
-);
+}, 5000);
 
-
-
-
-
-
-
-
-
-var wsUri = "ws://192.168.1.103:1337";
+var wsUri = "ws://192.168.0.167:1337";
 var output;
 
 function init() {
@@ -444,10 +432,9 @@ function init() {
 function testWebSocket() {
   websocket = new WebSocket(wsUri);
   websocket.onmessage = function (evt) {
-    onMessage(evt)
+    onMessage(evt);
   };
 }
-
 
 function onMessage(evt) {
   var data = evt.data.split(",");
@@ -455,38 +442,33 @@ function onMessage(evt) {
   chartProgress1.updateOptions({
     series: [
       {
-        data: [data[1]]
-      }
+        data: [data[1]],
+      },
     ],
     subtitle: {
-      text: data[1] + "°C"
-    }
+      text: data[1] + "°C",
+    },
   });
 
   chartProgress2.updateOptions({
     series: [
       {
-        data: [data[2]]
-      }
+        data: [data[2]],
+      },
     ],
     subtitle: {
-      text: data[2] + "%"
-    }
+      text: data[2] + "%",
+    },
   });
 
   chartLine.updateSeries([
     {
       data: [
         ...chartLine.w.config.series[0].data,
-        [chartLine.w.globals.maxX + 3000000, parseInt(data[3],10)]
-      ]
-    }
+        [chartLine.w.globals.maxX + 3000000, parseInt(data[3], 10)],
+      ],
+    },
   ]);
-
 }
 
-
-
 window.addEventListener("load", init, false);
-
-

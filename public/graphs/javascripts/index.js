@@ -419,14 +419,14 @@ let i = setInterval(function () {
 
 setTimeout(function () {
   clearInterval(i);
-  console.log("done");
 }, 5000);
 
-var wsUri = "ws://192.168.1.103:1337";
+var wsUri = "ws://192.168.1.10:1337";
 var output;
 
 function init() {
   testWebSocket();
+  console.log("userid:", userid);
 }
 
 function testWebSocket() {
@@ -434,30 +434,32 @@ function testWebSocket() {
   websocket.onmessage = function (evt) {
     onMessage(evt);
   };
+  websocket.onopen = function (event) {
+    websocket.send(`id: ${userid}`);
+  };
 }
 
 function onMessage(evt) {
   var data = evt.data.split(",");
-  console.log(data[3]);
   chartProgress1.updateOptions({
-    series: [
-      {
-        data: [data[1]],
-      },
-    ],
-    subtitle: {
-      text: data[1] + "°C",
-    },
-  });
-
-  chartProgress2.updateOptions({
     series: [
       {
         data: [data[2]],
       },
     ],
     subtitle: {
-      text: data[2] + "%",
+      text: data[2] + "°C",
+    },
+  });
+
+  chartProgress2.updateOptions({
+    series: [
+      {
+        data: [data[3]],
+      },
+    ],
+    subtitle: {
+      text: data[3] + "%",
     },
   });
 
@@ -465,7 +467,7 @@ function onMessage(evt) {
     {
       data: [
         ...chartLine.w.config.series[0].data,
-        [chartLine.w.globals.maxX + 3000000, parseInt(data[3], 10)],
+        [chartLine.w.globals.maxX + 3000000, parseInt(data[1], 10)],
       ],
     },
   ]);

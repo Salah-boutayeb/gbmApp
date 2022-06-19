@@ -421,13 +421,12 @@ setTimeout(function () {
   clearInterval(i);
 }, 5000);
 
-var wsUri = "ws://192.168.1.103:1337";
+var wsUri = "ws://192.168.0.167:1337";
 var output;
 
 function init() {
   testWebSocket();
   console.log("userid:", userid);
-
 }
 
 function testWebSocket() {
