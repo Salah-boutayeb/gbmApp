@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('../partials/head.ejs'); %>
+  <% const is = include('../../controllers/user.js'); %> <%-
+  include('../partials/head.ejs'); %>
 
   <body>
     <!-- partial:index.partial.html -->
-    <%- include('../partials/header.ejs'); %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/">GBIM Monitor </a>
+      <p>Welcome <%= data.nom + ' ' +data.prenom %></p>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/patient">ajouter patient</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">logout</a>
+        </li>
+      </ul>
+    </nav>
     <div id="wrapper">
       <div class="col-12 mb-4">
         <div class="box mt-4">
@@ -79,10 +91,20 @@
                   </select>
                 </div>
               </div>
-              <div class="col-12">
+              <div class="col-6">
                 <div class="form-group">
                   <label for="datenaissance">Date de naissance:</label>
                   <input type="date" name="datenaissance" id="datenaissance" />
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="sexe">status:</label>
+                  <select class="form-control" name="status" id="sexe">
+                    <option value="marie">marie</option>
+                    <option value="celibataire">celibataire</option>
+                    <option value="divorce">divorce</option>
+                  </select>
                 </div>
               </div>
               <% for(var i = 0; i < issues.length; i++) { %>
@@ -92,13 +114,9 @@
                   <% for(var j = 0; j < issues[i].length; j++) { %>
                   <div class="col-3">
                     <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="<%= issues[i][j] %>"
-                        value="<%= issues[i][j] %>"
-                        name="<%= issues[i][j] %>"
-                      />
+                      <input class="form-check-input" type="checkbox" id="<%=
+                      issues[i][j] %>" value="<%= issues[i][j] %>" name="<%=
+                      issues[i][j].replaceAll(" ","") %>" />
                       <label class="form-check-label" for="<%= issues[i][j] %>"
                         ><%= issues[i][j] %></label
                       >

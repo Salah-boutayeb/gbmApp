@@ -41,6 +41,7 @@ module.exports = (sequelize, DataTypes) => {
     History.belongsTo(models.Patient, {
       foreignKey: "patientId",
       as: "patient",
+      onDelete: "cascade",
     });
   };
   return History;

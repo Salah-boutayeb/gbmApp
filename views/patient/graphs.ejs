@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+<% const is = include('../../controllers/user.js'); %>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Nom de patient</title>
+    <title>patient</title>
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
@@ -16,6 +17,18 @@
 
   <body>
     <!-- partial:index.partial.html -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/">GBIM Monitor </a>
+      <p>Welcome <%= data.nom + ' ' +data.prenom %></p>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/patient">ajouter patient</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">logout</a>
+        </li>
+      </ul>
+    </nav>
     <div id="wrapper">
       <div class="content-area">
         <div class="container-fluid">
@@ -23,7 +36,9 @@
             <div class="row mt-4 justify-content-center align-items-center">
               <div class="col-12">
                 <div class="box">
-                  <h2 class="text-white">Nom de patient</h2>
+                  <h2 class="text-white">
+                    Nom de patient : <%= patient.nom %> <%= patient.prenom %>
+                  </h2>
                 </div>
               </div>
             </div>

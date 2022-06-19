@@ -31,6 +31,7 @@ module.exports = (sequelize, DataTypes) => {
     Patient.hasMany(models.PatientData, {
       foreignKey: "patientDataId",
       as: "patientData",
+      onDelete: "cascade",
     });
   };
   return Patient;
