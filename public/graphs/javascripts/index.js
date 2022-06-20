@@ -424,7 +424,7 @@ setTimeout(function () {
     Swal.fire({
       icon: "error",
       title: "SPO2",
-      text: "Quantité d'oxtgène dans le sang insuffisante!",
+      text: "Quantité d'oxygène dans le sang insuffisante!",
     });
   }
 }, 5000);
@@ -449,6 +449,7 @@ function testWebSocket() {
 
 function onMessage(evt) {
   var data = evt.data.split(",");
+  console.log(data);
   chartProgress1.updateOptions({
     series: [
       {
