@@ -402,9 +402,10 @@ chartProgress4.render();
 //   ]);
 // }, 50);
 
+let p4Data
 let i = setInterval(function () {
   iteration2++;
-  var p4Data = getRangeRandom({ min: 95, max: 98 });
+  p4Data= getRangeRandom({ min: 94, max: 98 });
   chartProgress4.updateOptions({
     series: [
       {
@@ -419,6 +420,13 @@ let i = setInterval(function () {
 
 setTimeout(function () {
   clearInterval(i);
+  if(p4Data < 95) {
+    Swal.fire({
+      icon: 'error',
+      title: 'SPO2',
+      text: 'Quantité d\'oxtgène dans le sang insuffisante!',
+    })
+  }
 }, 5000);
 
 var wsUri = "ws://192.168.1.10:1337";
@@ -471,6 +479,23 @@ function onMessage(evt) {
       ],
     },
   ]);
+
+
+  if(parseInt(data[1], 10) < 50 || parseInt(data[1], 10) > 100 ) {
+    Swal.fire({
+      icon: 'error',
+      title: 'ECG',
+      text: 'Rythme cardiaque irrégulier',
+    })
+  }
+
+  if(parseFloat(data[2]) < 36.1 || parseFloat(data[2]) > 37.6 ) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Température',
+      text: 'Hyperthermie',
+    })
+  }
 }
 
 window.addEventListener("load", init, false);
