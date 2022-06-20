@@ -48,16 +48,13 @@ apps.ws("/", (ws, req) => {
         temp: msg.split(",")[2],
         patientId: msg.split(",")[0],
       }).save();
-
-      ws.send("thank u");
+      appWs.getWss().clients.forEach((client) => {
+        client.send(msg);
+      });
     } else if (msg.split(":").length == 2) {
       id = msg.split(":")[1];
       console.log(id);
     }
-
-    /* appWs.getWss().clients.forEach((client) => {
-      client.send("data");
-    }); */
   });
   ws.on("close", () => {
     console.log("disconnected");

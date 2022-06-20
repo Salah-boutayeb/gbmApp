@@ -1,6 +1,5 @@
 "use strict";
 const { Model } = require("sequelize");
-var models = require("../models");
 module.exports = (sequelize, DataTypes) => {
   class PatientData extends Model {
     /**
@@ -16,6 +15,8 @@ module.exports = (sequelize, DataTypes) => {
     {
       ecg: DataTypes.DOUBLE,
       temp: DataTypes.DOUBLE,
+      pcg: DataTypes.DOUBLE,
+      spo2: DataTypes.DOUBLE,
       patientId: DataTypes.INTEGER,
     },
     {
@@ -23,11 +24,5 @@ module.exports = (sequelize, DataTypes) => {
       modelName: "PatientData",
     }
   );
-  PatientData.associate = function (models) {
-    PatientData.belongsTo(models.Patient, {
-      foreignKey: "patientId",
-      as: "patient",
-    });
-  };
   return PatientData;
 };

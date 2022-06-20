@@ -9,13 +9,14 @@ exports.isAuthenticated = () => {
 const generateHash = (password) => {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
+
 exports.show_login = (req, res, next) => {
   res.locals.user = null;
   res.render("user/login", { errors: {} });
 };
 
 exports.show_signup = (req, res, next) => {
-  res.render("user/register", { errors: {} });
+  res.render("user/register", { user: req.user });
 };
 exports.home = async (req, res, next) => {
   let user = await models.User.findOne({
@@ -24,7 +25,6 @@ exports.home = async (req, res, next) => {
   res.render("", { data: user });
 };
 exports.signup = (req, res, next) => {
-  console.log(req.body);
   const newUser = models.User.build({
     nom: req.body.nom,
     prenom: req.body.prenom,
@@ -58,8 +58,6 @@ exports.logout = (req, res, next) => {
 
 /* patient controllers */
 exports.createPatient = (req, res, next) => {
-  console.log(req.body);
-
   var newP = models.Patient.build({
     nom: req.body.nom,
     prenom: req.body.prenom,
@@ -68,10 +66,10 @@ exports.createPatient = (req, res, next) => {
     adresse: req.body.adresse,
     tele: req.body.telephone,
     status: req.body.status,
+    datenaissance: req.body.datenaissance,
   })
     .save()
     .then((findedUser) => {
-      console.log("oneeeeeee", findedUser.dataValues.id);
       models.History.build({
         asthme: req.body.Asthme ? true : false,
         cancer: req.body.Cancer ? true : false,
@@ -93,8 +91,6 @@ exports.createPatient = (req, res, next) => {
         patientId: findedUser.dataValues.id,
       }).save();
     });
-
-  console.log(newP.id);
   res.redirect("/patients");
 };
 exports.show_patient = async (req, res, next) => {
@@ -140,8 +136,6 @@ exports.deletePatient = async (req, res, next) => {
   await models.Patient.destroy({
     where: { id: req.body.id },
   }).then((numberRows) => {
-    console.log(`${numberRows} Patient rows deleted`);
-
     res.setHeader("Content-Type", "application/json");
     res.send(JSON.stringify({ deleted: numberRows > 0 }));
   });
@@ -151,11 +145,15 @@ exports.show_graphs = async (req, res, next) => {
   let user = await models.User.findOne({
     where: { id: req.user.id },
   });
-  console.log(user);
+
   let patient = await models.Patient.findOne({
     where: { id: req.params.id },
   });
-
+  let patient_histories = await models.History.findAll({
+    where: { patientId: req.params.id },
+    include: "patient",
+  }).then((val) => {});
+  //console.log(patient_histories);
   res.render("patient/graphs", {
     patient: patient.dataValues,
     user: user,

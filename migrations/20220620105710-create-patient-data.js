@@ -14,6 +14,12 @@ module.exports = {
       temp: {
         type: Sequelize.DOUBLE,
       },
+      pcg: {
+        type: Sequelize.DOUBLE,
+      },
+      spo2: {
+        type: Sequelize.DOUBLE,
+      },
       patientId: {
         type: Sequelize.INTEGER,
         allowNull: false,

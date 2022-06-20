@@ -56,6 +56,115 @@
           </div>
         </div>
       </div>
+      <div class="col-12 mb-4">
+        <div class="box mt-4">
+          <form method="post" action="/addpatient">
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="nom">Nom</label>
+                  <input
+                    type="nom"
+                    class="form-control"
+                    name="nom"
+                    id="nom"
+                    
+                    value="<%= patient.nom %> "
+                    placeholder="Entrer votre Nom"
+                  />
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="prenom">Prénom</label>
+                  <input
+                    type="prenom"
+                    class="form-control"
+                    name="prenom"
+                    id="prenom"
+                    value="<%= patient.prenom %> "
+                    placeholder="Entrer votre prénom"
+                  />
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="naissance">lieu de naissance</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="adresse"
+                    id="naissance"
+                    value="<%= patient.adresse %> "
+                    placeholder="Entrer votre date de naissance"
+                  />
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="telephone">telephone</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="tele"
+                    id="telephone"
+                    value="<%= patient.tele %> "
+                    placeholder="Entrer votre numero de telephone"
+                  />
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="cin">CIN</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="CIN"
+                    id="cin"
+                    value="<%= patient.CIN %> "
+                    placeholder="Entrer votre CIN"
+                  />
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="sexe">Sexe:</label>
+                  <select class="form-control" name="sexe" id="sexe">
+                    <option value="homme" <% if (patient.sexe == true) { %> check <% } %> >Homme</option>
+                    <option value="femme" <% if (patient.sexe == false) { %> check <% } %>>Femme</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="datenaissance">Date de naissance:</label>
+                  <input type="date" name="datenaissance" value="<%= patient.datenaissance.toLocaleDateString('en-GB').split('/').reverse().join('-') %>" id="datenaissance" />
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="sexe">status:</label>
+                  <select class="form-control" name="status" id="sexe">
+                    <option value="celibataire"<% if (patient.status== "celibataire") { %> check <% } %>>celibataire</option>
+                    <option value="marie" <% if (patient.status == "marie") { %> check <% } %>>marie</option>
+                    <option value="divorce" <% if (patient.status == "divorce") { %> check <% } %>>divorce</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-group text-center">
+                  <input
+                    class="btn btn-success text-center"
+                    type="submit"
+                    value="valider"
+                  />
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
     <!-- partial -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
@@ -63,6 +172,7 @@
     <script>
       let userid = <%= patient.id %>
     </script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="javascripts/index.js"></script>
   </body>
 </html>

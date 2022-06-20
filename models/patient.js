@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       adresse: DataTypes.STRING,
       tele: DataTypes.STRING,
       status: DataTypes.STRING,
+      datenaissance: DataTypes.DATE,
     },
     {
       sequelize,
@@ -34,5 +35,6 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "cascade",
     });
   };
+
   return Patient;
 };
